@@ -160,7 +160,7 @@ func sendChatRequestWithRetry(t *testing.T, url string, modelName string, messag
 		}
 
 		if attempt < maxRetries-1 {
-			t.Logf("Attempt %d/%d returned status %d or error response, retrying in %v...", attempt+1, maxRetries, resp.StatusCode, backoff)
+			t.Logf("Attempt %d/%d returned status %d or error response: %s, retrying in %v...", attempt+1, maxRetries, resp.StatusCode, responseStr, backoff)
 			time.Sleep(backoff)
 			backoff = min(backoff*2, maxBackoff)
 			continue
